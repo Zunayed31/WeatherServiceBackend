@@ -5,15 +5,15 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.Api", "WeatherService.Api\WeatherService.Api.csproj", "{CBD840D7-FB32-4D5A-B67A-04787492F1B8}"
 	ProjectSection(ProjectDependencies) = postProject
-		{1F252BDB-D360-45E2-9F8C-208FA8B7533C} = {1F252BDB-D360-45E2-9F8C-208FA8B7533C}
-		{7A209AB8-3A80-413F-AF08-EE89E7D11808} = {7A209AB8-3A80-413F-AF08-EE89E7D11808}
+		{35F81631-DA8E-44E2-9F20-65FB5CA3C469} = {35F81631-DA8E-44E2-9F20-65FB5CA3C469}
+		{83F3D12F-C07A-4147-8AAC-029AFAB18A73} = {83F3D12F-C07A-4147-8AAC-029AFAB18A73}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Domain", "WeatherService.Domain\WeatherService.Domain.csproj", "{1F252BDB-D360-45E2-9F8C-208FA8B7533C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Domain", "WeatherService.Domain\WeatherService.Domain.csproj", "{35F81631-DA8E-44E2-9F20-65FB5CA3C469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Infrastructure", "WeatherService.Infrastructure\WeatherService.Infrastructure.csproj", "{7A209AB8-3A80-413F-AF08-EE89E7D11808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherService.Infrastructure", "WeatherService.Infrastructure\WeatherService.Infrastructure.csproj", "{83F3D12F-C07A-4147-8AAC-029AFAB18A73}"
 	ProjectSection(ProjectDependencies) = postProject
-		{1F252BDB-D360-45E2-9F8C-208FA8B7533C} = {1F252BDB-D360-45E2-9F8C-208FA8B7533C}
+		{35F81631-DA8E-44E2-9F20-65FB5CA3C469} = {35F81631-DA8E-44E2-9F20-65FB5CA3C469}
 	EndProjectSection
 EndProject
 Global
@@ -26,14 +26,14 @@ Global
 		{CBD840D7-FB32-4D5A-B67A-04787492F1B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBD840D7-FB32-4D5A-B67A-04787492F1B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBD840D7-FB32-4D5A-B67A-04787492F1B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F252BDB-D360-45E2-9F8C-208FA8B7533C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F252BDB-D360-45E2-9F8C-208FA8B7533C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F252BDB-D360-45E2-9F8C-208FA8B7533C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F252BDB-D360-45E2-9F8C-208FA8B7533C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7A209AB8-3A80-413F-AF08-EE89E7D11808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7A209AB8-3A80-413F-AF08-EE89E7D11808}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7A209AB8-3A80-413F-AF08-EE89E7D11808}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7A209AB8-3A80-413F-AF08-EE89E7D11808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F81631-DA8E-44E2-9F20-65FB5CA3C469}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F81631-DA8E-44E2-9F20-65FB5CA3C469}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F81631-DA8E-44E2-9F20-65FB5CA3C469}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F81631-DA8E-44E2-9F20-65FB5CA3C469}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83F3D12F-C07A-4147-8AAC-029AFAB18A73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83F3D12F-C07A-4147-8AAC-029AFAB18A73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83F3D12F-C07A-4147-8AAC-029AFAB18A73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83F3D12F-C07A-4147-8AAC-029AFAB18A73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

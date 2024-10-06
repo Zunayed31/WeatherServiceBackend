@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WeatherService.Api.Services.Interfaces;
 
 namespace WeatherService.Api.Controllers
 {
@@ -6,28 +7,29 @@ namespace WeatherService.Api.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        private readonly IForecastService _forecastService;
+        private readonly ILocationService _locationService;
 
-        private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IForecastService forecastService, ILocationService locationService)
         {
-            _logger = logger;
+            _forecastService = forecastService;
+            _locationService = locationService;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        //[HttpGet("/[controller]/Weather")]
+        //public async Task<ActionResult> GetWeather()
+        //{
+        //    var response = _forecastService.GetWeather();
+
+        //    return StatusCode(200, response.Result);
+        //}
+
+        [HttpGet("/[controller]/Location/{group}")]
+        public async Task<ActionResult> GetTopLocations(int group)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var response = await _locationService.GetTopLocations(group);
+
+            return StatusCode((int) response.StatusCode, response);
         }
     }
 }

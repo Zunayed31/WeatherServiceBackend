@@ -1,6 +1,15 @@
+using WeatherService.Api.Services;
+using WeatherService.Api.Services.Interfaces;
+using WeatherService.Infrastructure.Repositories;
+using WeatherService.Infrastructure.Repositories.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IForecastService, ForecastService>();
+builder.Services.AddScoped<ILocationService, LocationService>();
+builder.Services.AddScoped<IForecastRepository, ForecastRepository>();
+builder.Services.AddScoped<ILocationRepository, LocationRepository>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -8,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
