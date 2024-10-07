@@ -16,13 +16,13 @@ namespace WeatherService.Api.Controllers
             _locationService = locationService;
         }
 
-        //[HttpGet("/[controller]/Weather")]
-        //public async Task<ActionResult> GetWeather()
-        //{
-        //    var response = _forecastService.GetWeather();
+        [HttpGet("/[controller]/Forecast/{locationKey}")]
+        public async Task<ActionResult> GetDayForecast(int locationKey)
+        {
+            var response = _forecastService.GetDayForecast(locationKey);
 
-        //    return StatusCode(200, response.Result);
-        //}
+            return StatusCode(200, response.Result);
+        }
 
         [HttpGet("/[controller]/Location/{group}")]
         public async Task<ActionResult> GetTopLocations(int group)

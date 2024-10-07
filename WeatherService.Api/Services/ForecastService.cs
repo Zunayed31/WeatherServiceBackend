@@ -1,5 +1,5 @@
-﻿using WeatherService.Api.Services.Interfaces;
-using WeatherService.Domain.Entities.External;
+﻿using WeatherService.Api.DTOs;
+using WeatherService.Api.Services.Interfaces;
 using WeatherService.Infrastructure.Repositories.Interfaces;
 
 namespace WeatherService.Api.Services
@@ -7,19 +7,33 @@ namespace WeatherService.Api.Services
     public class ForecastService : IForecastService
     {
         private IForecastRepository _forecastRepository;
+        private readonly IConfiguration _configuration;
 
-        public ForecastService(IForecastRepository forecastRepository) 
+        public ForecastService(IForecastRepository forecastRepository, IConfiguration configuration)
         {
             _forecastRepository = forecastRepository;
+            _configuration = configuration;
         }
 
-        #region GetWeather
+        #region GetDayForecast
 
-        public async Task<List<int>> GetWeather()
+        public async Task<GetDayForecastResponse> GetDayForecast(int locationKey)
         {
-            return null;
+            string apiKey = _configuration[Domain.Constants.Constants.ACCU_WEATHER_API_KEY];
+            var repoResponse = await _forecastRepository.GetDayForecast(locationKey, apiKey);
+
+            return new GetDayForecastResponse
+            {
+                Forecast = repoResponse.Forecast,
+                StatusCode = repoResponse.StatusCode
+            };
         }
 
-        #endregion GetWeather        
+        private double Celsius(double f)
+        {
+            return 5.0 / 9.0 * (f - 32);
+        }
+
+        #endregion GetDayForecast        
     }
 }
