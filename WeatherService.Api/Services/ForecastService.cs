@@ -1,5 +1,6 @@
 ﻿using WeatherService.Api.DTOs;
 using WeatherService.Api.Services.Interfaces;
+using WeatherService.Domain.Entities.External.Forecast;
 using WeatherService.Infrastructure.Repositories.Interfaces;
 
 namespace WeatherService.Api.Services
@@ -22,16 +23,19 @@ namespace WeatherService.Api.Services
             string apiKey = _configuration[Domain.Constants.Constants.ACCU_WEATHER_API_KEY];
             var repoResponse = await _forecastRepository.GetDayForecast(locationKey, apiKey);
 
+            foreach (var temp in repoResponse.Forecast.DailyForecasts) 
+            {
+                temp.Temperature.Maximum.Value = (float) Math.Ceiling(5.0 / 9.0 * (temp.Temperature.Maximum.Value - 32));
+                temp.Temperature.Maximum.Unit = "C";
+                temp.Temperature.Minimum.Value = (float) Math.Floor(5.0 / 9.0 * (temp.Temperature.Minimum.Value - 32));
+                temp.Temperature.Minimum.Unit = "C";
+            }
+
             return new GetDayForecastResponse
             {
                 Forecast = repoResponse.Forecast,
                 StatusCode = repoResponse.StatusCode
             };
-        }
-
-        private double Celsius(double f)
-        {
-            return 5.0 / 9.0 * (f - 32);
         }
 
         #endregion GetDayForecast        
